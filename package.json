@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3000",
+    "dev:sanity": "cd studio && sanity start --port 3333",
     "build": "yarn build:sanity && yarn build:web",
     "build:sanity": "cd studio && npx sanity build ../public/studio -y && cd ..",
     "build:web": "next build",
