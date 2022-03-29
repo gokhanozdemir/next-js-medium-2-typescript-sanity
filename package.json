@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build": "yarn build:sanity && yarn build:web",
+    "build:sanity": "cd studio && npx sanity build ../public/studio -y && cd ..",
+    "build:web": "next build",
+    "start": "cd studio && sanity start --port 3333  && cd .. && next start --port 3000",
+    "lint": "next lint",
+    "postinstall": "cd studio && yarn"
   },
   "dependencies": {
     "next": "12.1.1",
