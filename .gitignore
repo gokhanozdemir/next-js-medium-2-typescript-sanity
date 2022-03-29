@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/sanitymedium2/node_modules
+/studio/node_modules
 /.pnp
 .pnp.js
 

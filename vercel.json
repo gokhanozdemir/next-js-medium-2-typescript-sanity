@@ -2,8 +2,8 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/sanitymedium2/(.*)",
-      "destination": "/sanitymedium2/index.html"
+      "source": "/studio/(.*)",
+      "destination": "/studio/index.html"
     }
   ]
 }
