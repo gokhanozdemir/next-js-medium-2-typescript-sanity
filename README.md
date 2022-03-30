@@ -1,6 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Aim
 
-## Getting Started
+Is to warm up my fingers back to react again. I really enjoyed building this project.
+
+While this is the main inspiration was [this tutorial](https://www.youtube.com/watch?v=I2dcpatq54o), there has been many additional chanages required to follow along and it took lots of debugging esspecially due to CSM live-dev server tunneling.
+
+I built the stack from the scratch by initiating next.js first, then combining tailwind, sanity and deployment hooks on vercel.
+
+## Headlines
+
+- Full Stack Development project
+- Incremental static regeneration based on React getStaticProps
+- Static optimized pages
+- Form validation with [react-hook-form](https://react-hook-form.com)
+- CMS is hosted by [sanity.io](sanity.io)
+- Fully responsive build
+
+When the content is updated with the CMS you don't need to re-deploy. The files will be regenerated after 60 seconds. Just be patient.
+
+## Tech Stack
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). [TypeScript](https://nextjs.org/learn/excel/typescript) is used with [TailwindCSS](https://tailwindcss.com/). Hosted on [Vercel](https://vercel.com) and [sanity.io](https://sanity.io) from the inital dev process.
+
+### Preview
+
+[Frontend](https://next-js-medium-2-typescript-sanity-studio.vercel.app) - CRUD actions for listing posts, and adding comments
+
+[Backend](https://next-js-medium-2-typescript-sanity-studio.vercel.app/studio) - You will be asked to log-in
+
+#### Responsive FrontEnd
+
+![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/responsive-gif.gif)
+
+#### Incremental Fractional Static Page Generation
+
+![Incremental Fractional Static Page Generation](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/cms-ifr-1-gif.gif)
+
+#### Add and Manage Comment
+
+![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/cms-add-comment-part-1-gif.gif)
+
+#### Preview Comment After Approval
+
+![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/cms-add-comment-part-2-gif.gif)
+
+#### CMS Versioning
+
+![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/cms-versioning-gif.gif)
+
+## Getting Started on Dev Server
+
+Even if you try to setup the dev, .env variables are setup in the Vercel.com settings. You should re init sanity from scratch.
 
 First, run the development server:
 
@@ -14,21 +63,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello).
