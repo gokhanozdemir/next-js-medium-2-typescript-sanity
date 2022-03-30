@@ -20,7 +20,7 @@ interface Props {
 function Post({ post }: Props) {
 	const [submitted, setSubmitted] = useState(false)
 
-	// console.log(post)
+	console.log(post)
 	// How we connect to our comment form
 	const { register, handleSubmit, formState: { errors } } = useForm<commentTypeInterface>()
 
