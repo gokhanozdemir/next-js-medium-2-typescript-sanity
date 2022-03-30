@@ -79,27 +79,21 @@ function Post({ post }: Props) {
 
 				<input {...register("_id")} type="hidden" name="_id" value={post._id} />
 
-				<label className="block mb-5"  {...register("name", { required: true })}>
+				<label className="block mb-5">
 					<span className="text-gray-700">Name</span>
-					<input className="shadow border rounded p-2 mt-2 form-input block w-full 
-					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
-					invalid:border-pink-500 invalid:text-pink-600
+					<input {...register("name", { required: true })} className="shadow border rounded p-2 mt-2 form-input block w-full  focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500 invalid:border-pink-500 invalid:text-pink-600
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						type="text" placeholder="John Appleseed" />
 				</label>
-				<label className="block mb-5"  {...register("email", { required: true })}>
+				<label className="block mb-5">
 					<span className="text-gray-700">Email</span>
-					<input className="shadow border rounded p-2 mt-2 form-input block w-full 
-					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
-					invalid:border-pink-500 invalid:text-pink-600
+					<input {...register("email", { required: true })} className="shadow border rounded p-2 mt-2 form-input block w-full  focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500 invalid:border-pink-500 invalid:text-pink-600
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						type="email" placeholder="john@domain.com" />
 				</label>
-				<label className="block mb-5"  {...register("comment", { required: true })}>
+				<label className="block mb-5" >
 					<span className="text-gray-700">Comment</span>
-					<textarea className="shadow border rounded p-2 px-3 mt-2 form-textarea block w-full 
-					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
-					invalid:border-pink-500 invalid:text-pink-600
+					<textarea {...register("comment", { required: true })} className="shadow border rounded p-2 px-3 mt-2 form-textarea block w-full focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500 	invalid:border-pink-500 invalid:text-pink-600
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						placeholder="Your comments" rows={8} />
 				</label>
