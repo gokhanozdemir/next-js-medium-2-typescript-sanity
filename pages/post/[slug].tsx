@@ -3,7 +3,14 @@ import Header from "../../components/Header"
 import { sanityClient, urlFor } from "../../sanity"
 import { PostTypeInterface } from "../../typings"
 import PortableText from "react-portable-text"
+import { useForm, SubmitHandler } from "react-hook-form"
 
+interface commentTypeInterface {
+	_id: string
+	name: string
+	email: string
+	comment: string
+}
 
 interface Props {
 	post: PostTypeInterface
@@ -12,6 +19,16 @@ interface Props {
 
 function Post({ post }: Props) {
 	// console.log(post)
+
+	// How we connect to our comment form
+	const { register, handleSubmit, formState: { errors } } = useForm<commentTypeInterface>()
+
+
+	let onSubmit: SubmitHandler<commentTypeInterface> = async (data) => {
+		console.log(data)
+		console.log(errors)
+	}
+
 	return (
 		<main>
 			<Header />
@@ -58,11 +75,11 @@ function Post({ post }: Props) {
 			<h4 className="text-3xl font-bold">Leave a comment below!</h4>
 			<hr className="py-3 mt-2" />
 
-			<form action="" className="flex flex-col p-5 max-w-2xl mx-auto mb-10">
+			<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-5 max-w-2xl mx-auto mb-10">
 
 				<input {...register("_id")} type="hidden" name="_id" value={post._id} />
 
-				<label className="block mb-5 " htmlFor=""  {...register("name", { required: true })}>
+				<label className="block mb-5"  {...register("name", { required: true })}>
 					<span className="text-gray-700">Name</span>
 					<input className="shadow border rounded p-2 mt-2 form-input block w-full 
 					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
@@ -70,15 +87,15 @@ function Post({ post }: Props) {
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						type="text" placeholder="John Appleseed" />
 				</label>
-				<label className="block mb-5  " htmlFor=""  {...register("email", { required: true })}>
+				<label className="block mb-5"  {...register("email", { required: true })}>
 					<span className="text-gray-700">Email</span>
 					<input className="shadow border rounded p-2 mt-2 form-input block w-full 
 					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
 					invalid:border-pink-500 invalid:text-pink-600
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-						type="text" placeholder="john@domain.com" />
+						type="email" placeholder="john@domain.com" />
 				</label>
-				<label className="block mb-5  " htmlFor=""  {...register("comment", { required: true })}>
+				<label className="block mb-5"  {...register("comment", { required: true })}>
 					<span className="text-gray-700">Comment</span>
 					<textarea className="shadow border rounded p-2 px-3 mt-2 form-textarea block w-full 
 					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
@@ -88,11 +105,11 @@ function Post({ post }: Props) {
 				</label>
 				{/* errors when validation fails */}
 				<div className="flex flex-col p-5">
-					{errors.name && <p className="text-red-700 font-semibold" >- <span className="font-bold">Name</span> field is required</p>}
-					{errors.email && <p className="text-red-700 font-semibold" >- <span className="font-bold">Email</span> field is required</p>}
-					{errors.comment && <p className="text-red-700 font-semibold" >- <span className="font-bold">Comment</span> field is required</p>}
+					{errors.name && (<p className="text-red-700" >* <span className="font-bold">Name</span> field is required</p>)}
+					{errors.email && (<p className="text-red-700" >* <span className="font-bold">Email</span> field is required</p>)}
+					{errors.comment && (<p className="text-red-700" >* <span className="font-bold">Comment</span> field is required</p>)}
 				</div>
-
+				<input type="submit" className="shadow bg-yellow-500 hover:bg-yellow-400 text-white font-bold focus:outline-none py-2 px-4 rounded cursor-pointer" />
 			</form>
 
 		</main >
