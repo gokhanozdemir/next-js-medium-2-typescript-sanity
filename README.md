@@ -29,23 +29,23 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 #### Responsive FrontEnd
 
-![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/responsive-gif.gif)
+![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/blob/master/_readme/responsive-gif.gif?raw=true)
 
 #### Incremental Fractional Static Page Generation
 
-![Incremental Fractional Static Page Generation](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/cms-ifr-1-gif.gif)
+![Incremental Fractional Static Page Generation](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/blob/master/_readme/cms-ifr-1-gif.gif?raw=true)
 
 #### Add and Manage Comment
 
-![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/cms-add-comment-part-1-gif.gif)
+![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/blob/master/_readme/cms-add-comment-part-1-gif.gif?raw=true)
 
 #### Preview Comment After Approval
 
-![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/cms-add-comment-part-2-gif.gif)
+![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/blob/master/_readme/cms-add-comment-part-2-gif.gif?raw=true)
 
 #### CMS Versioning
 
-![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/_readme/cms-versioning-gif.gif)
+![Responsive Layout](https://github.com/gokhanozdemir/next-js-medium-2-typescript-sanity/blob/master/_readme/cms-versioning-gif.gif?raw=true)
 
 ## Getting Started on Dev Server
 
