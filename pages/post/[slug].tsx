@@ -128,16 +128,17 @@ function Post({ post }: Props) {
 			)}
 
 			{/* comments */}
-			<div className="flex flex-col max-w-2xl mx-auto p-10 mb-20 shadow-yellow-500 shadow space-y-2">
-				<h3 className="text-4xl" >Comments</h3>
-				<hr />
-				{console.log("post.comments", post.comments[0])}
-				{post.comments.map((comment: PostandCommentTypeInterface) => {
-					return <div key={comment._id}>
-						<p> <span className="text-yellow-500">{comment.name}: </span> {comment.comment}</p>
-					</div>
-				})}
-			</div>
+			{(post.comments.length !== 0) ?
+				<div className="flex flex-col max-w-2xl mx-auto p-10 mb-20 shadow-yellow-500 shadow space-y-2">
+					<h3 className="text-4xl" >Comments</h3>
+					<hr />
+					{/* {console.log("post.comments", post.comments)} */}
+					{post.comments.map((comment: PostandCommentTypeInterface) => {
+						return <div key={comment._id}>
+							<p> <span className="text-yellow-500">{comment.name}: </span> {comment.comment}</p>
+						</div>
+					})}
+				</div> : ""}
 
 		</main >
 
