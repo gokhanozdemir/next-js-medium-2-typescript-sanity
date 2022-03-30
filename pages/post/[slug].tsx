@@ -76,7 +76,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		return {
 			props: {
 				post,
-			}
+			},
+			revalidate: 60, // after 60 secs it will update the details page again
 		}
 	}
 }
