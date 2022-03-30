@@ -22,7 +22,7 @@ function Post({ post }: Props) {
 				<h1 className="text-3xl mt-10 mb-3 ">{post.title}</h1>
 				<h2 className="text-xl font-light text-gray-500 mb-2">{post.description}</h2>
 
-				<div className="flex items-center space-x-2">
+				<div className="flex items-center space-x-2 my-4">
 					<img className="h-10 w-10 rounded-full" src={urlFor(post.author.image).url()!} alt={post.author.name} />
 					<p className="font-extralight text-sm">Blog post by <span className="text-green-600">{post.author.name}</span> - Published at {new Date(post._createdAt).toLocaleString('tr-TR')}</p>
 				</div>
@@ -34,11 +34,11 @@ function Post({ post }: Props) {
 						projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
 						content={post.body}
 						serializers={{
-							h1: (props: any) => {
-								return <h1 className="text-2xl font-bold my-5" {...props} />
-							},
 							h2: (props: any) => {
-								return <h2 className="text-xl font-bold my-5" {...props} />
+								return <h2 className="text-2xl font-bold my-5" {...props} />
+							},
+							h3: (props: any) => {
+								return <h3 className="text-xl font-bold my-5" {...props} />
 							},
 							li: ({ children }: any) => {
 								<li className="text-xl font-bold my-5" >{children}</li>
@@ -49,7 +49,41 @@ function Post({ post }: Props) {
 						}}
 					/>
 				</div>
+
+
 			</article>
+
+			<hr className="max-w-lg my-5 mx-auto border border-yellow-500" />
+			<h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
+			<h4 className="text-3xl font-bold">Leave a comment below!</h4>
+			<hr className="py-3 mt-2" />
+
+			<form action="" className="flex flex-col p-5 max-w-2xl mx-auto mb-10">
+				<label className="block mb-5 " htmlFor="">
+					<span className="text-gray-700">Name</span>
+					<input className="shadow border rounded p-2 mt-2 form-input block w-full 
+					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
+					invalid:border-pink-500 invalid:text-pink-600
+      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+						type="text" placeholder="John Appleseed" />
+				</label>
+				<label className="block mb-5  " htmlFor="">
+					<span className="text-gray-700">Email</span>
+					<input className="shadow border rounded p-2 mt-2 form-input block w-full 
+					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
+					invalid:border-pink-500 invalid:text-pink-600
+      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+						type="text" placeholder="john@domain.com" />
+				</label>
+				<label className="block mb-5  " htmlFor="">
+					<span className="text-gray-700">Comment</span>
+					<textarea className="shadow border rounded p-2 px-3 mt-2 form-textarea block w-full 
+					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
+					invalid:border-pink-500 invalid:text-pink-600
+      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+						placeholder="Your comments" rows={8} />
+				</label>
+			</form>
 
 		</main >
 
