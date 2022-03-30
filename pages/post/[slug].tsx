@@ -59,7 +59,10 @@ function Post({ post }: Props) {
 			<hr className="py-3 mt-2" />
 
 			<form action="" className="flex flex-col p-5 max-w-2xl mx-auto mb-10">
-				<label className="block mb-5 " htmlFor="">
+
+				<input {...register("_id")} type="hidden" name="_id" value={post._id} />
+
+				<label className="block mb-5 " htmlFor=""  {...register("name", { required: true })}>
 					<span className="text-gray-700">Name</span>
 					<input className="shadow border rounded p-2 mt-2 form-input block w-full 
 					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
@@ -67,7 +70,7 @@ function Post({ post }: Props) {
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						type="text" placeholder="John Appleseed" />
 				</label>
-				<label className="block mb-5  " htmlFor="">
+				<label className="block mb-5  " htmlFor=""  {...register("email", { required: true })}>
 					<span className="text-gray-700">Email</span>
 					<input className="shadow border rounded p-2 mt-2 form-input block w-full 
 					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
@@ -75,7 +78,7 @@ function Post({ post }: Props) {
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						type="text" placeholder="john@domain.com" />
 				</label>
-				<label className="block mb-5  " htmlFor="">
+				<label className="block mb-5  " htmlFor=""  {...register("comment", { required: true })}>
 					<span className="text-gray-700">Comment</span>
 					<textarea className="shadow border rounded p-2 px-3 mt-2 form-textarea block w-full 
 					focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500
@@ -83,6 +86,13 @@ function Post({ post }: Props) {
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						placeholder="Your comments" rows={8} />
 				</label>
+				{/* errors when validation fails */}
+				<div className="flex flex-col p-5">
+					{errors.name && <p className="text-red-700 font-semibold" >- <span className="font-bold">Name</span> field is required</p>}
+					{errors.email && <p className="text-red-700 font-semibold" >- <span className="font-bold">Email</span> field is required</p>}
+					{errors.comment && <p className="text-red-700 font-semibold" >- <span className="font-bold">Comment</span> field is required</p>}
+				</div>
+
 			</form>
 
 		</main >
