@@ -4,6 +4,7 @@ import { sanityClient, urlFor } from "../../sanity"
 import { PostTypeInterface } from "../../typings"
 import PortableText from "react-portable-text"
 import { useForm, SubmitHandler } from "react-hook-form"
+import { useState } from "react"
 
 interface commentTypeInterface {
 	_id: string
@@ -16,17 +17,27 @@ interface Props {
 	post: PostTypeInterface
 }
 
-
 function Post({ post }: Props) {
-	// console.log(post)
+	const [submitted, setSubmitted] = useState(false)
 
+	// console.log(post)
 	// How we connect to our comment form
 	const { register, handleSubmit, formState: { errors } } = useForm<commentTypeInterface>()
 
 
-	let onSubmit: SubmitHandler<commentTypeInterface> = async (data) => {
-		console.log(data)
-		console.log(errors)
+	const onSubmit: SubmitHandler<commentTypeInterface> = async (data) => {
+		//console.log(data)
+		//console.log(errors)
+		fetch('/api/createComment', {
+			method: 'POST',
+			body: JSON.stringify(data)
+		}).then(() => {
+			console.log("fetch data", data)
+			setSubmitted(true)
+		}).catch((err) => {
+			console.log("Error: ", err)
+			setSubmitted(false)
+		})
 	}
 
 	return (
@@ -70,31 +81,40 @@ function Post({ post }: Props) {
 
 			</article>
 
-			<hr className="max-w-lg my-5 mx-auto border border-yellow-500" />
-			<h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
-			<h4 className="text-3xl font-bold">Leave a comment below!</h4>
-			<hr className="py-3 mt-2" />
+			<div className="block max-w-2xl mx-auto ">
+				<hr className="max-w-xl my-10 mx-auto border border-yellow-500" />
+				<h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
+				<h4 className="text-3xl font-bold">Leave a comment below!</h4>
+				<hr className="py-3 mt-2" />
+			</div>
 
-			<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-5 max-w-2xl mx-auto mb-10">
+			{submitted ? (
+				<div className="flex flex-col p-10 mb-10 font-bold bg-yellow-500 text-white max-w-2xl mx-auto mb-10">
+					<h3 className="text-3xl font-bold">Thank you for submitting your comment</h3>
+					<p>Once it has been approved, it will appear below!
+					</p>
+				</div>
+
+			) : (<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col py-5 max-w-2xl mx-auto mb-10">
 
 				<input {...register("_id")} type="hidden" name="_id" value={post._id} />
 
 				<label className="block mb-5">
 					<span className="text-gray-700">Name</span>
 					<input {...register("name", { required: true })} className="shadow border rounded p-2 mt-2 form-input block w-full  focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500 invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+  focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						type="text" placeholder="John Appleseed" />
 				</label>
 				<label className="block mb-5">
 					<span className="text-gray-700">Email</span>
 					<input {...register("email", { required: true })} className="shadow border rounded p-2 mt-2 form-input block w-full  focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500 invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+  focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						type="email" placeholder="john@domain.com" />
 				</label>
 				<label className="block mb-5" >
 					<span className="text-gray-700">Comment</span>
 					<textarea {...register("comment", { required: true })} className="shadow border rounded p-2 px-3 mt-2 form-textarea block w-full focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500 	invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+  focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						placeholder="Your comments" rows={8} />
 				</label>
 				{/* errors when validation fails */}
@@ -104,7 +124,7 @@ function Post({ post }: Props) {
 					{errors.comment && (<p className="text-red-700" >* <span className="font-bold">Comment</span> field is required</p>)}
 				</div>
 				<input type="submit" className="shadow bg-yellow-500 hover:bg-yellow-400 text-white font-bold focus:outline-none py-2 px-4 rounded cursor-pointer" />
-			</form>
+			</form>)}
 
 		</main >
 
