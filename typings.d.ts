@@ -12,6 +12,6 @@ export interface PostTypeInterface {
       url: string;
     };
   };
-  slug: { current: strimng };
+  slug: { current: string };
   body: [object];
 }
