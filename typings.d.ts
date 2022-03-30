@@ -6,7 +6,7 @@ export interface PostTypeInterface {
     name: string;
     image: string;
   };
-  comments: CommentTypeInterface[];
+  comments: PostandCommentTypeInterface[];
   description: string;
   mainImage: {
     asset: {
@@ -17,7 +17,7 @@ export interface PostTypeInterface {
   body: [object];
 }
 
-export interface CommentTypeInterface {
+export interface PostandCommentTypeInterface {
   approved: boolean;
   comment: string;
   email: string;

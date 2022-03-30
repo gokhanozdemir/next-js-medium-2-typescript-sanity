@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next"
 import Header from "../../components/Header"
 import { sanityClient, urlFor } from "../../sanity"
-import { PostTypeInterface } from "../../typings"
+import { PostandCommentTypeInterface, PostTypeInterface } from "../../typings"
 import PortableText from "react-portable-text"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useState } from "react"
@@ -20,7 +20,7 @@ interface Props {
 function Post({ post }: Props) {
 	const [submitted, setSubmitted] = useState(false)
 
-	console.log(post)
+	// console.log(post)
 	// How we connect to our comment form
 	const { register, handleSubmit, formState: { errors } } = useForm<commentTypeInterface>()
 
@@ -111,7 +111,7 @@ function Post({ post }: Props) {
   focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
 						type="email" placeholder="john@domain.com" />
 				</label>
-				<label className="block mb-5" >
+				<label className="block" >
 					<span className="text-gray-700">Comment</span>
 					<textarea {...register("comment", { required: true })} className="shadow border rounded p-2 px-3 mt-2 form-textarea block w-full focus:outline-none focus:ring-2 ring-offset-2 ring-yellow-500 	invalid:border-pink-500 invalid:text-pink-600
   focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
@@ -124,7 +124,20 @@ function Post({ post }: Props) {
 					{errors.comment && (<p className="text-red-700" >* <span className="font-bold">Comment</span> field is required</p>)}
 				</div>
 				<input type="submit" className="shadow bg-yellow-500 hover:bg-yellow-400 text-white font-bold focus:outline-none py-2 px-4 rounded cursor-pointer" />
-			</form>)}
+			</form>
+			)}
+
+			{/* comments */}
+			<div className="flex flex-col max-w-2xl mx-auto p-10 mb-20 shadow-yellow-500 shadow space-y-2">
+				<h3 className="text-4xl" >Comments</h3>
+				<hr />
+				{console.log("post.comments", post.comments[0])}
+				{post.comments.map((comment: PostandCommentTypeInterface) => {
+					return <div key={comment._id}>
+						<p> <span className="text-yellow-500">{comment.name}: </span> {comment.comment}</p>
+					</div>
+				})}
+			</div>
 
 		</main >
 
